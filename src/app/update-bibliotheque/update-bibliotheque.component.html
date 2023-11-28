@@ -1,0 +1,17 @@
+<form>
+    <div [hidden]="ajout" >
+    <label>ID Bibliotheque</label>
+    <input type="text" [readOnly]="!ajout" [(ngModel)]="bibliotheque.idBib" name="idBibliotheque" class="form-control w-25">
+    </div>
+    <div>
+    <label>Nom Bibliotheque</label>
+    <input type="text" [(ngModel)]="bibliotheque.nomBib" name="nomBibliotheque" class="form-control"
+    placeholder="Entrez un nom de bibliotheque...">
+    </div>
+    <div class="mt-2">
+        <button type="submit" [disabled]="!bibliotheque.nomBib" class="btn btn-success"
+        (click)="saveBibliotheque()" >{{ajout ? 'Ajouter' : 'Modifier'}}
+        </button>
+        
+    </div>
+</form>

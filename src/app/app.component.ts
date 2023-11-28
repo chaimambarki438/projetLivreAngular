@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,18 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'MesLivres';
+  constructor (public authService: AuthService,
+              private router :Router) {}
+
+ngOnInit () {
+     this.authService.loadToken();
+      if (this.authService.getToken()==null ||
+       this.authService.isTokenExpired())
+       this.router.navigate(['/login']);
+  }
+
+  onLogout(){
+    this.authService.logout();
+  }
+  
 }

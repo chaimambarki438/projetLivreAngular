@@ -1,0 +1,40 @@
+<div class="container">
+    <div class="card shadow mb-4">
+    <div class="card-body">
+    <table class="table table-striped">
+    
+    <tr>
+    <th>Liste de Livres</th>
+    </tr>
+
+    <tr> <th>Id</th>
+        <th>Titre</th>
+         <th>Prix</th>
+          <th>Date Ouverture</th>
+          <th>Bibliotheque</th>
+           <th>Image</th>
+ </tr>
+<tbody *ngFor="let livre of livres">
+<tr >
+<td>{{livre.idLivre}}</td>
+<td>{{livre.titreLivre}}</td>
+<td>{{livre.prixLivre}}</td>
+<td>{{livre.dateOuverture| date:'dd/MM/yyyy'}}</td>
+<td>{{livre.bibliotheque!.nomBib}}</td>
+
+<td><img class="card-img-top img-responsive"
+    src="{{apiurl+'/image/loadfromFS/'+livre.idLivre}}"
+    style = "height :50px;width:100px">
+    </td>
+
+    
+<td><a *ngIf="authService.isAdmin()" class="btn btn-danger" (click)="supprimerLivre(livre)">Supprimer</a></td>
+<td><a *ngIf="authService.isAdmin()" class="btn btn-success" [routerLink]="['/updateLivre',livre.idLivre]">Modifier</a></td>
+ 
+</tr>
+</tbody>
+
+    </table>
+    </div>
+    </div>
+</div>

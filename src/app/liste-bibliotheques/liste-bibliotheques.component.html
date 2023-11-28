@@ -1,0 +1,28 @@
+<div class="container">
+
+    <div class="col-sm-4 col-md-4 col-lg-4 mb-4">
+    <app-update-bibliotheque [bibliotheque]="updatedBib"
+                            (bibliothequeUpdated)= "bibliothequeUpdated($event)"
+                            [ajout]="ajout">
+    </app-update-bibliotheque>
+    </div>
+<div class="card shadow mb-4">
+<div class="card-body">
+<table class="table table-striped">
+<thead>
+<tr> <th>Id</th>
+    <th>Nom Bibliotheque</th>
+ </tr>
+</thead>
+<tbody *ngFor="let bib of bibliotheques">
+<tr>
+<td>{{bib.idBib}}</td>
+<td>{{bib.nomBib}}</td>
+<td><a class="btn btn-warning mb-2" (click)="updateBib(bib)">Editer</a></td>
+<!--<td><a class="btn btn-danger" (click)="supprimerBibliotheque(bib)">Supprimer</a></td>  -->
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
